@@ -39,7 +39,7 @@ export function FeatureHero({
       ) : (
         <Image src={imageUrl} alt={imageAlt} fill sizes="100vw" className="object-cover" priority />
       )}
-      <div className="absolute inset-0 bg-gradient-to-t from-foreground/55 via-foreground/10 to-foreground/0 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-black/0 pointer-events-none" />
       {/* Faint top scrim so the overlaid (dark) nav stays legible on any hero image. */}
       <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-background/35 to-transparent pointer-events-none" />
       <div className="absolute inset-0 flex items-end">
