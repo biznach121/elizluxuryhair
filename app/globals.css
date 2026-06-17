@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@source "../node_modules/@cimplify/sdk/dist";
+
+/* Best Hairline — pure black & white, modelled on dhair-boutique.com.
+   White background, near-black text. "primary" = near-black so buttons/links
+   stay monochrome. Sharp corners (radius 0). Destructive keeps a restrained
+   red so error/validation states stay legible. */
+@theme {
+  --color-background: oklch(1 0 0);
+  --color-foreground: oklch(0.13 0 0);
+  --color-card: oklch(1 0 0);
+  --color-card-foreground: oklch(0.13 0 0);
+  --color-popover: oklch(1 0 0);
+  --color-popover-foreground: oklch(0.13 0 0);
+  --color-primary: oklch(0.13 0 0);
+  --color-primary-foreground: oklch(1 0 0);
+  --color-secondary: oklch(0.97 0 0);
+  --color-secondary-foreground: oklch(0.13 0 0);
+  --color-muted: oklch(0.97 0 0);
+  --color-muted-foreground: oklch(0.45 0 0);
+  --color-accent: oklch(0.94 0 0);
+  --color-accent-foreground: oklch(0.13 0 0);
+  --color-destructive: oklch(0.55 0.21 27);
+  --color-destructive-foreground: oklch(0.99 0 0);
+  --color-border: oklch(0.9 0 0);
+  --color-input: oklch(0.89 0 0);
+  --color-ring: oklch(0.13 0 0);
+  --radius: 0rem;
+}
+
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--color-background);
+    color: var(--color-foreground);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  a { color: inherit; text-decoration: none; }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+    font-weight: 800;
+    line-height: 1.05;
+  }
+}
+
+/* Bottom-left brand flourish — see components/hair-badge.tsx. The curly-hair
+   motif gently sways; the badge slides up on first paint. Both animations are
+   disabled for visitors who prefer reduced motion. */
+@keyframes hair-sway {
+  0%, 100% { transform: rotate(-3.5deg); }
+  50%      { transform: rotate(3.5deg); }
+}
+@keyframes hair-badge-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+/* Occasional playful "perk" layered on top of the steady sway (≈ every 9s). */
+@keyframes hair-perk {
+  0%, 82%, 100% { transform: scale(1) translateY(0) rotate(0deg); }
+  86% { transform: scale(1.1) translateY(-2px) rotate(-7deg); }
+  90% { transform: scale(0.97) translateY(0) rotate(5deg); }
+  94% { transform: scale(1.04) rotate(-2deg); }
+}
+/* `backwards` (not `both`) so the one-shot intro doesn't pin opacity:1 and
+   override the footer fade-out toggled in components/hair-badge.tsx. */
+.hair-badge { animation: hair-badge-in 700ms ease-out backwards; transition: opacity 450ms ease; }
+.hair-sway  { transform-origin: 50% 12%; animation: hair-sway 4.5s ease-in-out infinite; }
+.hair-perk  { transform-origin: 50% 10%; animation: hair-perk 9s ease-in-out infinite; }
+
+/* Scroll reveal — sections fade + rise as they enter the viewport. Gated on the
+   `reveal-ready` class (added by components/scroll-reveal.tsx once JS runs) so
+   content is never hidden for no-JS visitors or crawlers. */
+.reveal-ready [data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal-ready [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hair-badge, .hair-sway, .hair-perk { animation: none; }
+  .hair-badge { transition: none; }
+  .reveal-ready [data-reveal] { opacity: 1; transform: none; transition: none; }
+}

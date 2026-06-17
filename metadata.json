@@ -1,0 +1,13 @@
+{
+  "id": "fashion",
+  "name": "Fashion",
+  "tagline": "Editorial multi-drop fashion storefront with lookbooks and size guides.",
+  "industry": "fashion",
+  "tags": ["fashion", "apparel", "lookbook"],
+  "stability": "stable",
+  "schemaType": "Store",
+  "mock": {
+    "seedName": "fashion",
+    "seedBusinessId": "bus_studio_frx"
+  }
+}
