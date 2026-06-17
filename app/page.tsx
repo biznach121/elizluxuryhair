@@ -55,6 +55,7 @@ export default async function HomePage() {
   return (
     <>
       <FeatureHero
+        tagline={brand.hero.tagline}
         title={brand.hero.title}
         description={brand.hero.subtitle}
         primaryCta={{ label: brand.hero.primaryCtaLabel, href: "/shop" }}

@@ -1,20 +1,19 @@
-# wigs
+# Eliz Luxury Hair
 
-A Cimplify storefront scaffolded from the **retail** template — Next.js 16 (App Router), React 19, Tailwind v4. Cool navy + electric blue palette, Inter + JetBrains Mono typography, modern electronics-store aesthetic.
+A Cimplify storefront — Next.js 16 (App Router), React 19, Tailwind v4 — for **Eliz Luxury Hair**, a Kumasi luxury hair house selling premium human-hair wigs, bundles and professional styling mannequins. Motto: *Your Best Hair Affair.*
+
+Soft, feminine "clean luxury" aesthetic: pearl off-white canvas, deep navy-teal + coral + nude palette (flat colours, no gradients), soft rounded corners, and Playfair Display (serif headings) · Poppins (rounded body) · Great Vibes (script wordmark + tagline) typography.
+
+It ships in two modes (see `AGENTS.md`): **DEMO** (default — an embedded wig + mannequin catalogue, no backend) and **REAL** (paste a `cpk_live_…` / `cpk_test_…` key to talk to hosted Cimplify).
 
 ## Run
 
 ```bash
 bun install
-bun dev
+bun dev        # next dev — demo mode, embedded catalogue
 ```
 
-Two things start in parallel:
-
-- `cimplify-mock --seed retail` — the Cimplify mock API on `http://127.0.0.1:8787`, seeded with Currents Electronics.
-- `next dev` — this storefront on `http://localhost:3000`.
-
-Open the storefront in your browser. Edit `app/page.tsx` to start customising.
+Open `http://localhost:3000`. Edit `lib/brand.ts` for any visible string and `app/globals.css` `@theme` for the palette/fonts.
 
 ## Structure
 

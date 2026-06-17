@@ -1,10 +1,13 @@
-# AGENTS.md — Best Hairline (wig boutique storefront)
+# AGENTS.md — Eliz Luxury Hair (wig boutique storefront)
 
 If you are an AI agent (Claude, Cursor, Aider, devin, …) working on this storefront, **start here.**
 
-Best Hairline is a Kumasi, Ghana wig boutique. This project began as the
-Cimplify fashion template and was redesigned into a black-and-white wig
-storefront (visually modelled on dhair-boutique.com).
+Eliz Luxury Hair is a Kumasi, Ghana luxury hair house — premium human-hair
+wigs, bundles **and professional styling mannequins**. Motto: *Your Best Hair
+Affair.* This project began as the Cimplify fashion template, was first built as
+a black-and-white wig storefront (dhair-boutique layout), then re-skinned into a
+soft, feminine "clean luxury" brand. The layout/structure is unchanged; the
+palette, type and a few accents were swapped.
 
 ## TL;DR for rebranding
 
@@ -53,28 +56,46 @@ Override with `NEXT_PUBLIC_DEMO=1|0` if ever needed.
 
 ## Aesthetic
 
-Close visual clone of dhair-boutique.com — **pure black & white, no accent colour**:
+dhair-boutique *layout*, re-skinned as **soft feminine "clean luxury"** — flat
+colours only, **NO gradients** (the only `bg-gradient-*` are the hero's
+dark-to-transparent legibility scrims over the photo, which stay):
 
-- **Fonts**: Inter (body) · **Montserrat** heavy/black (`--font-display`,
-  bold uppercase headings) · **Parisienne** script (`--font-script`, the logo
-  wordmark). All wired in `app/layout.tsx`.
-- **Monochrome** — white bg, near-black text; `--color-primary` is near-black so
-  buttons/links stay B&W. `destructive` keeps a restrained red for errors only.
-- **Sharp corners**: `--radius: 0`. Tiles, cards and buttons are square.
+- **Palette** (`app/globals.css` `@theme`, hex): pearl off-white bg `#F7F7F5`,
+  deep navy-teal text/primary `#3D5F79`, coral `#D6653B` (`destructive` — also
+  prices), soft nude `#DFB69F` + champagne `#BA886F` warmth, aqua `#6EB0B4`
+  focus ring. The raw palette is also exposed as `--color-brand-*` / `bg-pearl`
+  utilities for hand-placed accents.
+- **Fonts** (`app/layout.tsx`) — chosen to match the brand logo:
+  - **Poppins** (body, `--font-sans`).
+  - **Playfair Display** (serif headings, `--font-display` — applied to `h1–h4`
+    in the base layer).
+  - **Quicksand** (`--font-wordmark`) — rounded geometric sans matching the
+    logo's lowercase "elizluxuryhair" wordmark. Used for the brand mark in the
+    header, footer and floating `hair-badge`, rendered `lowercase font-semibold`
+    via inline `style={{ fontFamily: "var(--font-wordmark)" }}`.
+  - **Yellowtail** (`--font-script`) — casual brush script matching the logo's
+    "your best hair affair" tagline. Used for `brand.motto` / `brand.hero.tagline`
+    in the announcement bar + hero, via inline `style={{ fontFamily: "var(--font-script)" }}`.
+- **Soft rounded corners**: `--radius: 0.75rem`.
+- **Announcement bar** (`components/announcement-bar.tsx`): slim solid teal strip
+  at the very top (normal flow, fixed `h-9`) carrying `brand.announcement` + the
+  script `brand.motto`. The overlay homepage header is offset `top-9` to clear
+  it; inner-page sticky headers sit right under it.
 - **Header** (`components/header.tsx`, client — uses `usePathname`): cursive
   **script wordmark left**, centred uppercase nav (active underlined,
   `nav-link.tsx`), right utilities (currency label · Account · search · basket
   cart icon, `cart-pill.tsx`). On the **homepage it OVERLAYS the hero**:
-  `absolute`, transparent, **dark text by default → solid black + white text on
-  hover**. On every other route it's a solid black `sticky` bar. All children
-  inherit `currentColor`, so one colour switch on `<header>` drives the bar;
-  collapses to a hamburger below `xl`.
+  `absolute top-9`, transparent, **teal text by default → solid teal + pearl text
+  on hover**. On every other route it's a solid teal `sticky top-0` bar. All
+  children inherit `currentColor`, so one colour switch on `<header>` drives the
+  bar; collapses to a hamburger below `xl`.
 - **Full-screen hero** (`feature-hero.tsx`, `h-[100svh]`): lifestyle image
-  filling the viewport (header overlays it), **light sentence-case** headline +
-  **outlined square** CTA. Reads `brand.hero` (`image`, `title`, `subtitle`,
-  CTAs). Use a LIGHT-at-top hero image so the dark overlay nav stays legible.
+  filling the viewport (header overlays it), optional **script `tagline`** (the
+  motto) above a **light sentence-case** headline + **outlined** CTA. Reads
+  `brand.hero` (`image`, `tagline`, `title`, `subtitle`, CTAs). Use a LIGHT-at-top
+  hero image so the overlay nav stays legible.
 - **Collection tiles** (`collection-tiles.tsx`): portrait 3/4, centred light
-  label, **"VIEW" box on hover**, sharp corners, centred heavy heading.
+  label, **"VIEW" box on hover**, centred heavy heading.
 - **Product cards** — `components/store-product-card.tsx` is a custom client
   card (NOT the SDK `RetailProductCard`): **portrait 3/4** shot on a light-grey
   panel, left-aligned name + **"From <price>"** (SDK `<Price prefix="From ">`).
@@ -86,8 +107,9 @@ Close visual clone of dhair-boutique.com — **pure black & white, no accent col
   and a **custom scroll-progress bar** (light track + dark thumb; native
   scrollbar hidden, click-to-seek) — `components/product-carousel.tsx`.
   Shop/category/collection use grids.
-- Section headings are centred, heavy (`font-display font-black uppercase`).
-- Schema.org `@type` is `Store`.
+- Section headings are centred serif (`font-display font-black uppercase`) —
+  Playfair gives an elegant editorial-luxury feel rather than the old grotesque.
+- Schema.org `@type` is `BeautySalon`.
 
 ## Page surface
 
@@ -124,7 +146,7 @@ app/
 
 | File | Reads from `brand` |
 |---|---|
-| `app/layout.tsx` | identity, contact, socials, Store JSON-LD |
+| `app/layout.tsx` | identity, contact, socials, Organization/BeautySalon JSON-LD |
 | `app/page.tsx` | `brand.hero` (incl. `image`), `brand.home` (collections / bestSellers / getTheLook / instagram / testimonials), `brand.newsletter` |
 | `components/collection-tiles.tsx`, `braiding-feature.tsx`, `get-the-look.tsx`, `about-home.tsx`, `instagram-strip.tsx`, `testimonials.tsx`, `product-carousel.tsx` | `brand.home.*`, `brand.about` (new homepage sections) |
 
@@ -145,13 +167,16 @@ app/
 
 ## Wig-specific notes
 
-- **`brand.tradeIn`** is repurposed as the **Best Hairline Club** (loyalty /
+- **`brand.tradeIn`** is repurposed as the **The Eliz Luxury Club** (loyalty /
   rewards) — a three-step join → earn → redeem flow.
 - **`brand.brandStrip`** is repurposed as a quality-claims marquee
   ("100% RAW HUMAN HAIR", "HD TRANSPARENT LACE", …) rather than press logos.
+- **Mannequins**: Eliz Luxury Hair also sells styling mannequins — a
+  `mannequins` category + four products live in `wig-seed.ts`; the nav, footer
+  and FAQ reference them. They use loremflickr placeholder imagery.
 - **Header nav** links to demo category slugs (lace-front-wigs, curly, straight,
-  body-wave, bundles) + `/lookbook`. If you change `wig-seed.ts` category slugs,
-  update `brand.header.nav` and `brand.footer.sitemap` to match.
+  body-wave, bundles, **mannequins**) + `/lookbook`. If you change `wig-seed.ts`
+  category slugs, update `brand.header.nav` and `brand.footer.sitemap` to match.
 - **Currency is GHS** (`brand.currency`), prices live on each demo product.
 
 ## Known TODOs

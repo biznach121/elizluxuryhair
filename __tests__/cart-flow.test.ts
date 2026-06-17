@@ -4,7 +4,7 @@ import { brand } from "../lib/brand";
 import { wigSeedSource, WIG_BUSINESS_ID } from "../lib/demo/wig-seed";
 
 /**
- * Cart flow suite — base + Best Hairline assertions, run against the embedded
+ * Cart flow suite — base + Eliz Luxury Hair assertions, run against the embedded
  * wig mock (lib/demo/wig-seed.ts). The base suite covers the universal cart
  * contract (empty cart, add, dedupe, remove, businessId round-trip); the
  * `extend` hook adds wig-catalogue invariants.

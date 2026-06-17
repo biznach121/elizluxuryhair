@@ -63,8 +63,8 @@ export async function Footer() {
               className="inline-block mb-4 text-background"
             >
               <span
-                className="text-[34px] sm:text-[40px] leading-none"
-                style={{ fontFamily: "var(--font-script)" }}
+                className="text-[26px] sm:text-[30px] leading-none font-semibold lowercase tracking-tight"
+                style={{ fontFamily: "var(--font-wordmark)" }}
               >
                 {brand.name}
               </span>

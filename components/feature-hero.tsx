@@ -4,6 +4,8 @@ import { HeroCarousel } from "./hero-carousel";
 
 interface FeatureHeroProps {
   eyebrow?: string;
+  /** Flowing script line above the headline — the brand motto. */
+  tagline?: string;
   title: React.ReactNode;
   description: string;
   primaryCta: { label: string; href: string };
@@ -21,6 +23,7 @@ interface FeatureHeroProps {
  * outlined square CTA. Strings come from `brand.hero` at the call site.
  */
 export function FeatureHero({
+  tagline,
   title,
   description,
   primaryCta,
@@ -41,6 +44,14 @@ export function FeatureHero({
       <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-background/35 to-transparent pointer-events-none" />
       <div className="absolute inset-0 flex items-end">
         <div className="w-full max-w-7xl mx-auto px-6 sm:px-10 pb-12 sm:pb-16 lg:pb-20">
+          {tagline && (
+            <p
+              className="m-0 mb-2 text-brand-nude text-[clamp(1.9rem,5vw,3.25rem)] leading-none"
+              style={{ fontFamily: "var(--font-script)" }}
+            >
+              {tagline}
+            </p>
+          )}
           <h1 className="font-sans font-light text-[clamp(2.25rem,7vw,5.5rem)] m-0 mb-7 leading-[1.05] tracking-tight max-w-3xl">
             {title}
           </h1>

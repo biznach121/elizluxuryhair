@@ -3,7 +3,7 @@
  *
  * `createMockApp` is the same in-process Hono backend the SDK is tested
  * against (catalogue, cart, checkout, pricing — all real), here seeded with the
- * Best Hairline wig catalogue (./wig-seed.ts). One module-scoped singleton is
+ * Eliz Luxury Hair wig catalogue (./wig-seed.ts). One module-scoped singleton is
  * shared by the SSR client (lib/cimplify-store.ts) and the browser route
  * handler (app/api/mock), so a cart added in the browser is visible to the same
  * in-memory store.

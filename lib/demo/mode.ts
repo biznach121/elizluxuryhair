@@ -1,7 +1,7 @@
 /**
  * Demo vs. real mode.
  *
- * Best Hairline ships in two modes:
+ * Eliz Luxury Hair ships in two modes:
  *
  *   • DEMO (default) — a fully self-contained wig storefront. The catalogue,
  *     categories, images and cart are served by an in-process mock seeded with

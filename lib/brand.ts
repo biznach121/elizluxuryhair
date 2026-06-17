@@ -2,8 +2,9 @@
  * Brand & content configuration — single source of truth for every visible
  * string. Edit this file to rebrand. See ../AGENTS.md.
  *
- * Best Hairline — a Kumasi, Ghana wig boutique. Black-and-white, luxury-minimal
- * styling lives in app/globals.css; product data in demo mode comes from
+ * Eliz Luxury Hair — a Kumasi, Ghana luxury hair house (wigs + mannequins).
+ * Soft, feminine "clean luxury" styling (teal/coral/nude palette, serif +
+ * script type) lives in app/globals.css; product data in demo mode comes from
  * lib/demo/wig-seed.ts.
  */
 
@@ -27,6 +28,10 @@ export interface Brand {
   name: string;
   shortName: string;
   microTag: string;
+  /** Brand motto, set in the script face (announcement bar + hero). */
+  motto: string;
+  /** Short promise shown on the top announcement bar. */
+  announcement: string;
   description: string;
   schemaType:
     | "Store" | "Bakery" | "Restaurant" | "BeautySalon"
@@ -41,7 +46,7 @@ export interface Brand {
   socials: BrandSocial[];
   header: { nav: { label: string; href: string }[] };
   hero: {
-    badge: string; title: string; subtitle: string;
+    badge: string; tagline?: string; title: string; subtitle: string;
     primaryCtaLabel: string;
     secondaryCtaLabel?: string; secondaryCtaHref?: string;
     image?: string;
@@ -124,12 +129,14 @@ export interface Brand {
 }
 
 export const brand: Brand = {
-  name: "Best Hairline",
-  shortName: "Best Hairline",
-  microTag: "Premium Human Hair · Kumasi",
+  name: "Eliz Luxury Hair",
+  shortName: "Eliz Luxury Hair",
+  microTag: "Luxury Hair, Wigs & Mannequins",
+  motto: "Your Best Hair Affair",
+  announcement: "Free Kumasi delivery over ₵3,000",
   description:
-    "Best Hairline is a Kumasi-based wig boutique specialising in premium raw human hair wigs, lace fronts, closures and bundles — hand-tied, ethically sourced, and made to last.",
-  schemaType: "Store",
+    "Eliz Luxury Hair is a luxury hair house specialising in premium raw human hair wigs, lace fronts, closures, bundles and professional styling mannequins — hand-tied, ethically sourced, and made to last. Your Best Hair Affair.",
+  schemaType: "BeautySalon",
 
   currency: "GHS",
   locale: "en_GH",
@@ -141,16 +148,16 @@ export const brand: Brand = {
     countryCode: "GH",
     phone: "+233 55 123 4567",
     phoneTel: "+233551234567",
-    email: "hello@besthairline.shop",
-    privacyEmail: "privacy@besthairline.shop",
-    supportEmail: "care@besthairline.shop",
+    email: "hello@elizluxuryhair.com",
+    privacyEmail: "privacy@elizluxuryhair.com",
+    supportEmail: "care@elizluxuryhair.com",
     hours: "Mon–Sat · 9am–7pm",
   },
 
   socials: [
-    { label: "Instagram", href: "https://instagram.com/besthairline", icon: "instagram" },
-    { label: "TikTok", href: "https://www.tiktok.com/tag/besthairline", icon: "tiktok" },
-    { label: "Facebook", href: "https://facebook.com/besthairline", icon: "facebook" },
+    { label: "Instagram", href: "https://instagram.com/elizluxuryhair", icon: "instagram" },
+    { label: "TikTok", href: "https://www.tiktok.com/tag/elizluxuryhair", icon: "tiktok" },
+    { label: "Facebook", href: "https://facebook.com/elizluxuryhair", icon: "facebook" },
     { label: "WhatsApp", href: "https://wa.me/233551234567", icon: "whatsapp" },
   ],
 
@@ -161,34 +168,36 @@ export const brand: Brand = {
       { label: "Straight", href: "/categories/straight" },
       { label: "Body Wave", href: "/categories/body-wave" },
       { label: "Bundles", href: "/categories/bundles" },
+      { label: "Mannequins", href: "/categories/mannequins" },
       { label: "Find Your Style", href: "/lookbook" },
     ],
   },
 
   hero: {
     badge: "100% raw human hair",
-    title: "Hair like yours, only better.",
+    tagline: "Your Best Hair Affair",
+    title: "Hair like yours, only more luxurious.",
     subtitle:
-      "Premium raw human hair lace fronts, closures and bundles — hand-tied, pre-plucked and ready to wear. Delivered across Kumasi, nationwide and worldwide.",
+      "Premium raw human hair lace fronts, closures, bundles and professional styling mannequins — hand-tied, pre-plucked and ready to wear. Delivered across Kumasi, nationwide and worldwide.",
     primaryCtaLabel: "Shop now",
     secondaryCtaLabel: "Find your style",
     secondaryCtaHref: "/lookbook",
     image: "https://res.cloudinary.com/dcc5ggnkc/image/upload/v1781677537/givcu2lwngwnndfwl5g4.png",
-    video: "https://res.cloudinary.com/dcc5ggnkc/video/upload/v1781689914/raa7d3k4noajyajzmu88.mp4",
+    video: "https://res.cloudinary.com/dcc5ggnkc/video/upload/v1781710513/hd4tncap1v63wfdict8o.mp4",
   },
 
   shop: {
     eyebrow: "The collection",
-    title: "Every unit we stock.",
+    title: "Every piece we stock.",
     description:
-      "Browse our full range of premium human hair wigs, closures and bundles. Filter by texture, length and price — same-day Kumasi delivery on every order.",
+      "Browse our full range of premium human hair wigs, closures, bundles and styling mannequins. Filter by texture, length and price — same-day Kumasi delivery on every order.",
   },
 
   home: {
     collections: { eyebrow: "Shop by texture", title: "Shop our collections" },
     braiding: {
       title: "Human Braiding Hair",
-      body: "Introducing Best Hairline's raw bulk hair — soft, flowing textures that elevate any braided style with movement, dimension and an effortlessly luxurious finish.",
+      body: "Introducing Eliz Luxury Hair's raw bulk hair — soft, flowing textures that elevate any braided style with movement, dimension and an effortlessly luxurious finish.",
       bulletsTitle: "Perfect for:",
       bullets: [
         "Boho Knotless Braids",
@@ -236,10 +245,10 @@ export const brand: Brand = {
       ],
     },
     instagram: {
-      eyebrow: "@besthairline",
+      eyebrow: "@elizluxuryhair",
       title: "Follow us on Instagram",
-      handle: "@besthairline",
-      href: "https://instagram.com/besthairline",
+      handle: "@elizluxuryhair",
+      href: "https://instagram.com/elizluxuryhair",
     },
     // Press wordmarks (typography-led, no logo licensing). Placeholders —
     // swap for the merchant's real features.
@@ -258,7 +267,7 @@ export const brand: Brand = {
           rating: 5,
         },
         {
-          quote: "Soft, full, and no shedding after weeks of wear. Best Hairline is my go-to now.",
+          quote: "Soft, full, and no shedding after weeks of wear. Eliz Luxury Hair is my go-to now.",
           name: "Akosua B.",
           location: "Accra",
           rating: 5,
@@ -301,13 +310,13 @@ export const brand: Brand = {
   ],
 
   brandStrip: {
-    headline: "Why women choose Best Hairline",
+    headline: "Why women choose Eliz Luxury Hair",
     brands: [
       "100% RAW HUMAN HAIR",
       "HD TRANSPARENT LACE",
       "HAND-TIED WEFTS",
       "PRE-PLUCKED HAIRLINE",
-      "HEAT-FRIENDLY",
+      "PRO STYLING MANNEQUINS",
       "KUMASI · GHANA",
     ],
   },
@@ -321,7 +330,7 @@ export const brand: Brand = {
   },
 
   tradeIn: {
-    eyebrow: "Best Hairline Club",
+    eyebrow: "The Eliz Luxury Club",
     title: "Slay more. Earn more.",
     body: "Join the club and earn points on every order, unlock member-only restock alerts, and get priority booking for installs at our Kumasi studio.",
     primaryCtaLabel: "Join the club",
@@ -338,27 +347,27 @@ export const brand: Brand = {
   newsletter: {
     eyebrow: "The list",
     title: "Be first to the next restock.",
-    body: "Join the Best Hairline list for early access to new units, member pricing, and styling tips. One-click unsubscribe, always.",
+    body: "Join the Eliz Luxury Hair list for early access to new units, member pricing, and styling tips. One-click unsubscribe, always.",
     placeholder: "you@email.com",
     submitLabel: "Join the list",
     successLabel: "You're on the list ✓",
   },
 
   about: {
-    eyebrow: "About Best Hairline",
+    eyebrow: "About Eliz Luxury Hair",
     title: "Every woman deserves to feel like a queen.",
     paragraphs: [
-      "Best Hairline began in Kumasi with a simple belief: a great wig should look and feel like your own hair, only better. We hand-pick premium raw human hair and turn it into lace fronts, closures and bundles that move, shine and last.",
+      "Eliz Luxury Hair began in Kumasi with a simple belief: a great wig should look and feel like your own hair, only more luxurious. We hand-pick premium raw human hair and turn it into lace fronts, closures and bundles that move, shine and last.",
       "Every unit is hand-tied by skilled artisans, pre-plucked with a natural hairline, and quality-checked before it reaches you. No synthetic shortcuts and no tangling after a week — just hair you can wear with confidence.",
-      "Based in Adum, Kumasi, we deliver across Ghana and ship worldwide. Visit the studio for a fitting, or shop online and let us bring the salon to you.",
+      "We also stock professional styling mannequins and canvas block heads — the same tools our stylists use to wash, install and store a unit so it stays salon-fresh for years. Based in Adum, Kumasi, we deliver across Ghana and ship worldwide.",
     ],
     image: "https://loremflickr.com/1000/1300/hairstyle,woman?lock=980",
-    video: "https://res.cloudinary.com/dcc5ggnkc/video/upload/v1781689820/syov78gtvuecbqrxlt4k.mp4",
+    video: "https://res.cloudinary.com/dcc5ggnkc/video/upload/v1781710510/hkinhekhtodra6ecgao4.mp4",
     sections: [
       {
         heading: "High quality",
         body: "We source raw, ethically obtained human hair from trusted suppliers in Southeast Asia, then hand-tie and inspect every unit. Double-drawn wefts mean full ends, not thin tips.",
-        image: "https://res.cloudinary.com/dcc5ggnkc/image/upload/v1781680877/skyr6qszqjqcduzqzofy.png",
+        image: "https://res.cloudinary.com/dcc5ggnkc/image/upload/v1781712937/na9wscfgf8socieezhfy.png",
       },
       {
         heading: "Made for you",
@@ -407,7 +416,7 @@ export const brand: Brand = {
           },
           {
             q: "Is the hair real human hair?",
-            a: "Yes. Every Best Hairline unit is 100% raw human hair — never synthetic. You can wash, style, curl and flat-iron it just like your own hair.",
+            a: "Yes. Every Eliz Luxury Hair unit is 100% raw human hair — never synthetic. You can wash, style, curl and flat-iron it just like your own hair.",
           },
           {
             q: "How do I choose the right length and density?",
@@ -425,6 +434,19 @@ export const brand: Brand = {
           {
             q: "Can I dye or bleach my unit?",
             a: "Raw hair takes colour well. We recommend a professional for bleaching knots or going lighter. Our 613 blonde units arrive ready to tone to your shade.",
+          },
+        ],
+      },
+      {
+        title: "Mannequins & styling tools",
+        items: [
+          {
+            q: "Do you sell mannequin heads?",
+            a: "Yes. We stock professional styling mannequins — canvas block heads for ventilating and customising, and cosmetology heads with human hair for braiding and practice. Browse them under Mannequins in the menu.",
+          },
+          {
+            q: "Which mannequin should I choose?",
+            a: "For washing, styling and storing a finished wig, a canvas block head with an adjustable stand is ideal. For braiding, ventilating or training, choose a cosmetology head with real human hair. Message us and we'll match one to your needs.",
           },
         ],
       },
@@ -450,13 +472,13 @@ export const brand: Brand = {
           },
           {
             q: "My unit arrived faulty — what now?",
-            a: "Email care@besthairline.shop with your order number and a photo within 48 hours of delivery and we'll make it right with a replacement or refund.",
+            a: "Email care@elizluxuryhair.com with your order number and a photo within 48 hours of delivery and we'll make it right with a replacement or refund.",
           },
         ],
       },
     ],
     contactPrompt: "Still have a question? Email",
-    contactEmail: "care@besthairline.shop",
+    contactEmail: "care@elizluxuryhair.com",
   },
 
   terms: {
@@ -466,7 +488,7 @@ export const brand: Brand = {
     sections: [
       {
         heading: "1. Who we are",
-        body: "Best Hairline (\"we\", \"us\") is a wig boutique based in Adum, Kumasi, Ghana. By placing an order on this site, you (\"you\", \"customer\") agree to these terms.",
+        body: "Eliz Luxury Hair (\"we\", \"us\") is a wig boutique based in Adum, Kumasi, Ghana. By placing an order on this site, you (\"you\", \"customer\") agree to these terms.",
       },
       {
         heading: "2. Our products",
@@ -486,7 +508,7 @@ export const brand: Brand = {
       },
       {
         heading: "6. Intellectual property",
-        body: "All photography, branding and content on this site belong to Best Hairline and may not be reused without written permission.",
+        body: "All photography, branding and content on this site belong to Eliz Luxury Hair and may not be reused without written permission.",
       },
       {
         heading: "7. Liability",
@@ -498,7 +520,7 @@ export const brand: Brand = {
       },
       {
         heading: "9. Contact",
-        body: "Questions? Email hello@besthairline.shop.",
+        body: "Questions? Email hello@elizluxuryhair.com.",
       },
     ],
   },
@@ -534,7 +556,7 @@ export const brand: Brand = {
       },
       {
         heading: "Your rights",
-        body: "Under the Ghana Data Protection Act, 2012 (Act 843), you have the right to access, correct or delete your data. Email privacy@besthairline.shop.",
+        body: "Under the Ghana Data Protection Act, 2012 (Act 843), you have the right to access, correct or delete your data. Email privacy@elizluxuryhair.com.",
       },
       {
         heading: "Retention",
@@ -562,8 +584,8 @@ export const brand: Brand = {
     sections: [
       { heading: "7-day exchange", body: "Unworn units can be exchanged within 7 days, with the lace untouched and original packaging intact." },
       { heading: "Hygiene policy", body: "For health reasons we cannot accept worn wigs or opened hair care products. These are final sale." },
-      { heading: "Faulty items", body: "Email care@besthairline.shop with a photo within 48 hours of delivery and we'll replace or refund." },
-      { heading: "How to start", body: "Message us on WhatsApp or email care@besthairline.shop with your order number and we'll guide you through it." },
+      { heading: "Faulty items", body: "Email care@elizluxuryhair.com with a photo within 48 hours of delivery and we'll replace or refund." },
+      { heading: "How to start", body: "Message us on WhatsApp or email care@elizluxuryhair.com with your order number and we'll guide you through it." },
     ],
   },
 
@@ -579,13 +601,13 @@ export const brand: Brand = {
         "Added alt text to product and editorial images.",
         "Respected `prefers-reduced-motion` for homepage transitions.",
       ] } },
-      { heading: "Reporting issues", body: "Email care@besthairline.shop and we'll respond within 5 business days." },
+      { heading: "Reporting issues", body: "Email care@elizluxuryhair.com and we'll respond within 5 business days." },
     ],
   },
 
   account: {
     loginEyebrow: "Welcome back",
-    loginTitle: "Sign in to Best Hairline",
+    loginTitle: "Sign in to Eliz Luxury Hair",
     loginSubtitle: "Track orders, manage your club points, and check out faster.",
     signupEyebrow: "Join us",
     signupTitle: "Create your account",
@@ -596,12 +618,12 @@ export const brand: Brand = {
 
   contactPage: {
     eyebrow: "Contact",
-    title: "Talk to Best Hairline.",
+    title: "Talk to Eliz Luxury Hair.",
     body: "Questions about a unit, sizing, delivery or an install? Message us and we'll reply within a business day.",
     reasons: ["Choosing a wig", "An order or delivery", "Installation & fittings", "Exchanges", "Wholesale & salons", "Something else"],
     directLines: [
       { label: "WhatsApp", value: "+233 55 123 4567", href: "https://wa.me/233551234567" },
-      { label: "Email", value: "care@besthairline.shop", href: "mailto:care@besthairline.shop" },
+      { label: "Email", value: "care@elizluxuryhair.com", href: "mailto:care@elizluxuryhair.com" },
       { label: "Phone", value: "+233 55 123 4567", href: "tel:+233551234567" },
     ],
   },
@@ -614,17 +636,18 @@ export const brand: Brand = {
 
   footer: {
     blurb:
-      "Premium raw human hair wigs, lace fronts, closures and bundles — hand-tied and made to last. Based in Adum, Kumasi, shipping across Ghana and worldwide.",
+      "Premium raw human hair wigs, lace fronts, closures, bundles and professional styling mannequins — hand-tied and made to last. Based in Adum, Kumasi, shipping across Ghana and worldwide. Your Best Hair Affair.",
     sitemap: [
       {
         title: "Shop",
         links: [
-          { label: "All wigs", href: "/shop" },
+          { label: "All products", href: "/shop" },
           { label: "Lace fronts", href: "/categories/lace-front-wigs" },
           { label: "Closure wigs", href: "/categories/closure-wigs" },
           { label: "Curly", href: "/categories/curly" },
           { label: "Straight", href: "/categories/straight" },
           { label: "Bundles", href: "/categories/bundles" },
+          { label: "Mannequins", href: "/categories/mannequins" },
         ],
       },
       {
@@ -653,7 +676,7 @@ export const brand: Brand = {
           { label: "Sign in", href: "/login" },
           { label: "Create account", href: "/signup" },
           { label: "Your orders", href: "/account/orders" },
-          { label: "Best Hairline Club", href: "/account" },
+          { label: "The Eliz Luxury Club", href: "/account" },
         ],
       },
       {
@@ -671,7 +694,7 @@ export const brand: Brand = {
 
   llms: {
     summary:
-      "Best Hairline — a Kumasi, Ghana wig boutique selling premium raw human hair lace fronts, closure wigs, curly and straight units, and bundles. Hand-tied, pre-plucked and ethically sourced. Same-day Kumasi delivery, nationwide and worldwide shipping, 7-day exchanges.",
+      "Eliz Luxury Hair — a Kumasi, Ghana luxury hair house selling premium raw human hair lace fronts, closure wigs, curly and straight units, bundles, and professional styling mannequins. Hand-tied, pre-plucked and ethically sourced. Motto: Your Best Hair Affair. Same-day Kumasi delivery, nationwide and worldwide shipping, 7-day exchanges.",
   },
 
   // brand.mock is used only by the vitest brand contract (it must name a known
@@ -679,6 +702,6 @@ export const brand: Brand = {
   // lib/demo/wig-seed.ts; the cart/contract suites point straight at that.
   mock: {
     seed: "retail",
-    businessId: "bus_best-hairline",
+    businessId: "bus_eliz-luxury-hair",
   },
 };

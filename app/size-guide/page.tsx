@@ -3,7 +3,7 @@ import { brand } from "@/lib/brand";
 
 export const metadata: Metadata = {
   title: `Wig Size Guide — ${brand.name}`,
-  description: "Cap sizes, lengths, and how to measure your head for the perfect Best Hairline fit.",
+  description: `Cap sizes, lengths, and how to measure your head for the perfect ${brand.name} fit.`,
 };
 
 const CAP_SIZES: { size: string; circumference: string; fits: string }[] = [
@@ -30,7 +30,7 @@ export default function SizeGuidePage() {
         Find your fit.
       </h1>
       <p className="text-base text-muted-foreground leading-relaxed max-w-2xl mb-12">
-        Almost every Best Hairline unit comes in an Average cap with adjustable
+        Almost every {brand.name} unit comes in an Average cap with adjustable
         straps and combs, so it fits a range of head sizes. Use the charts below
         to pick your cap size and length — and message us if you're between sizes.
       </p>

@@ -5,14 +5,14 @@ import { useEffect, useState } from "react";
 import { brand } from "@/lib/brand";
 
 /**
- * Decorative brand flourish — a small "Best Hairline" script wordmark next to a
+ * Decorative brand flourish — a small "Eliz Luxury Hair" script wordmark next to a
  * gently-swaying curly-hair motif, fixed to the bottom-left corner on every
  * page (mounted in app/layout.tsx). Links home.
  *
  * `mix-blend-difference` keeps the monochrome mark legible over anything behind
  * it — black on the light sections, white on the dark footer — without needing
  * a background panel. It fades out while the footer is on screen (the footer
- * now carries its own "Best Hairline" wordmark, so the floating one would just
+ * now carries its own "Eliz Luxury Hair" wordmark, so the floating one would just
  * collide) and fades back in once the footer scrolls away. Animation is pure
  * CSS and honours prefers-reduced-motion (keyframes in app/globals.css).
  */
@@ -48,8 +48,8 @@ export function HairBadge() {
         </span>
       </span>
       <span
-        className="text-[20px] leading-none transition-transform duration-300 group-hover:-translate-y-0.5 sm:text-[23px]"
-        style={{ fontFamily: "var(--font-script)" }}
+        className="text-[17px] leading-none font-semibold lowercase tracking-tight transition-transform duration-300 group-hover:-translate-y-0.5 sm:text-[20px]"
+        style={{ fontFamily: "var(--font-wordmark)" }}
       >
         {brand.name}
       </span>

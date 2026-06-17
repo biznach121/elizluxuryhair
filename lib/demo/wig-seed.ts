@@ -1,5 +1,5 @@
 /**
- * Best Hairline demo catalogue — the wig data that powers DEMO mode.
+ * Eliz Luxury Hair demo catalogue — the wig & mannequin data that powers DEMO mode.
  *
  * This is a custom function-seed for the in-process Cimplify mock
  * (`createMockApp({ seed: wigSeedSource })`, see ./mock.ts). It defines the
@@ -34,7 +34,7 @@ type SeedCtx = {
   }) => { id: string };
 };
 
-export const WIG_BUSINESS_ID = "bus_best-hairline";
+export const WIG_BUSINESS_ID = "bus_eliz-luxury-hair";
 export const WIG_CURRENCY = "GHS";
 
 /** Stable, keyword-matched stock placeholder. Swap for real product photos. */
@@ -96,6 +96,7 @@ const CATEGORIES: { name: string; slug: string; description: string; keyword: st
   { name: "Bundles & Bulk", slug: "bundles", description: "Raw, double-drawn weft bundles for custom installs and sew-ins.", keyword: "hair,salon", lock: 45 },
   { name: "Frontals & Closures", slug: "frontals-closures", description: "13x4 frontals and HD closures to finish any install flawlessly.", keyword: "ponytail", lock: 46 },
   { name: "Hair Care", slug: "hair-care", description: "Wig care, edge control and lace-melt essentials to keep units fresh.", keyword: "haircare", lock: 47 },
+  { name: "Mannequins", slug: "mannequins", description: "Professional styling mannequins, canvas block heads and stands for washing, installing and storing your unit.", keyword: "mannequin", lock: 48 },
 ];
 
 const COLLECTIONS: { name: string; slug: string; description: string }[] = [
@@ -119,17 +120,25 @@ const PRODUCTS: SeedProduct[] = [
   { name: "Raw Curly Bundle", description: "Double-drawn raw curly weft, sold per bundle. Thick from top to tip for a flawless sew-in.", price: "1100.00", category: "bundles", collection: "new-arrivals", keyword: "curly", lock: 22, isNew: true, images: trio(SHOT.kinkyCurlyB, MODEL.kinkyCurlyB) },
   { name: "Body Wave Bundle Deal (3 pcs)", description: "Three matched body-wave bundles at a saving — enough for a full, voluminous install.", price: "2900.00", category: "bundles", collection: "best-sellers", keyword: "hair", lock: 23, images: trio(SHOT.bodyWave, MODEL.bodyWave) },
   { name: "Loose Wave Bundle", description: "Soft loose-wave weft with natural luster. Mixes seamlessly for length and body.", price: "1150.00", category: "bundles", collection: "new-arrivals", keyword: "hairstyle", lock: 24, isNew: true, images: trio(SHOT.looseWave, MODEL.looseWave) },
-  { name: "Best Hairline Wig Care Kit", description: "Everything to keep a unit fresh: sulphate-free wash, leave-in conditioner, silk wrap and a wide-tooth comb.", price: "350.00", category: "hair-care", keyword: "haircare", lock: 25 },
+  { name: "Eliz Luxury Wig Care Kit", description: "Everything to keep a unit fresh: sulphate-free wash, leave-in conditioner, silk wrap and a wide-tooth comb.", price: "350.00", category: "hair-care", keyword: "haircare", lock: 25 },
   { name: "Edge Control & Lace Melt Set", description: "Flake-free edge control plus a lace-tint and melt spray for an invisible, all-day hold.", price: "180.00", category: "hair-care", keyword: "cosmetics", lock: 26 },
+
+  // Mannequins & styling tools — Eliz Luxury Hair also sells the kit a stylist
+  // uses to wash, install, customise and store a unit. Placeholder loremflickr
+  // imagery (keyword-locked); swap for real product shots.
+  { name: "Canvas Block Head & Clamp", description: "Cork-filled canvas block head with a sturdy table clamp — the studio standard for ventilating, customising, washing and storing a wig.", price: "650.00", category: "mannequins", collection: "best-sellers", keyword: "mannequin,head", lock: 30, images: [img("mannequin,head", 30), img("mannequin", 130), img("salon,mannequin", 230)] },
+  { name: "Cosmetology Mannequin Head — Human Hair", description: "Training head set with 100% human hair for braiding, styling practice and ventilating. Mounts on any tripod or table clamp.", price: "850.00", category: "mannequins", collection: "new-arrivals", isNew: true, keyword: "mannequin", lock: 31, images: [img("mannequin", 31), img("mannequin,head", 131), img("hairstyle,salon", 231)] },
+  { name: "Adjustable Tripod Wig Stand", description: "Height-adjustable aluminium tripod for styling and displaying your unit hands-free. Folds flat for travel and pop-up shop days.", price: "480.00", category: "mannequins", keyword: "tripod,stand", lock: 32, images: [img("tripod,stand", 32), img("mannequin,stand", 132), img("salon", 232)] },
+  { name: "Mini Wig Display Mannequin (3-Pack)", description: "A trio of compact foam display heads — perfect for storing wigs in shape or showing your collection at home or in store.", price: "520.00", category: "mannequins", collection: "best-sellers", keyword: "mannequin,display", lock: 33, images: [img("mannequin,display", 33), img("mannequin", 133), img("wig,display", 233)] },
 ];
 
 /** Function-seed builder consumed by createMockApp / createTestClient. */
 export function buildWigCatalogue(ctx: SeedCtx) {
   const business = ctx.business({
-    name: "Best Hairline",
+    name: "Eliz Luxury Hair",
     default_currency: WIG_CURRENCY,
     country_code: "GH",
-    email: "hello@besthairline.shop",
+    email: "hello@elizluxuryhair.com",
   }) as { id: string };
 
   for (const [i, c] of CATEGORIES.entries()) {

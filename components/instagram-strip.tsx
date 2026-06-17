@@ -2,14 +2,13 @@ import type { Product } from "@cimplify/sdk";
 import { brand } from "@/lib/brand";
 import { InstagramCard } from "./instagram-card";
 
-// Real Instagram-style reels (Cloudinary) of people wearing the hair. Cards
-// cycle through these in order; add more URLs to extend the rotation.
+// Eliz Luxury Hair TikTok/reel clips (Cloudinary) of people wearing the hair.
+// Cards cycle through these in order; add more URLs to extend the rotation.
 const VIDEOS = [
-  "https://res.cloudinary.com/dcc5ggnkc/video/upload/v1781649749/li37zzxyfcnjl31dlfvj.mp4",
-  "https://res.cloudinary.com/dcc5ggnkc/video/upload/v1781649759/w3jgybnf8abzr8azhnsu.mp4",
-  "https://res.cloudinary.com/dcc5ggnkc/video/upload/v1781649761/onz7ejjfdebqtrfjq9cn.mp4",
-  "https://res.cloudinary.com/dcc5ggnkc/video/upload/v1781649764/mgtro4urndgzt9wgsxnc.mp4",
-  "https://res.cloudinary.com/dcc5ggnkc/video/upload/v1781649764/j4kg9qfiarnkqjqhfout.mp4",
+  "https://res.cloudinary.com/dcc5ggnkc/video/upload/v1781710941/zclhwfrz5mq7r42v4cw5.mp4",
+  "https://res.cloudinary.com/dcc5ggnkc/video/upload/v1781710941/dtfjw2rtzrnqadlnoyw3.mp4",
+  "https://res.cloudinary.com/dcc5ggnkc/video/upload/v1781710782/tbkcamrdkwydhmeuznbr.mp4",
+  "https://res.cloudinary.com/dcc5ggnkc/video/upload/v1781710514/f0z9mbxx6kjb7fz1m4oi.mp4",
 ];
 
 /**
@@ -20,8 +19,10 @@ const VIDEOS = [
  */
 export function InstagramStrip({ products }: { products: Product[] }) {
   const ig = brand.home.instagram;
-  const items = products.slice(0, 8);
-  if (items.length === 0) return null;
+  if (products.length === 0) return null;
+  // One tile per provided reel (each paired with a product so it stays
+  // shoppable) — every video shows exactly once, no repeats.
+  const items = VIDEOS.map((video, i) => ({ video, product: products[i % products.length] }));
 
   return (
     <section className="min-h-[100svh] flex flex-col justify-center py-14 sm:py-20">
@@ -36,10 +37,10 @@ export function InstagramStrip({ products }: { products: Product[] }) {
         </a>
       </div>
 
-      <div className="grid grid-flow-col auto-cols-[85%] sm:auto-cols-[52%] lg:auto-cols-[34%] xl:auto-cols-[calc((100%-6rem)/2.8)] gap-3 sm:gap-4 overflow-x-auto snap-x scroll-smooth px-5 sm:px-8 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-        {items.map((p, i) => (
-          <div key={p.id} className="snap-start">
-            <InstagramCard product={p} video={VIDEOS[i % VIDEOS.length]} />
+      <div className="grid grid-flow-col auto-cols-[85%] sm:auto-cols-[52%] lg:auto-cols-[calc((100%-2rem)/3)] gap-3 sm:gap-4 overflow-x-auto snap-x scroll-smooth px-5 sm:px-8 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        {items.map(({ video, product }, i) => (
+          <div key={`${product.id}-${i}`} className="snap-start">
+            <InstagramCard product={product} video={video} />
           </div>
         ))}
       </div>

@@ -5,7 +5,7 @@ import { brand } from "@/lib/brand";
 
 export const metadata: Metadata = {
   title: `Find Your Style — ${brand.name}`,
-  description: "Browse Best Hairline by look — lace fronts, curls, sleek straight, and bundles.",
+  description: `Browse ${brand.name} by look — lace fronts, curls, sleek straight, and bundles.`,
 };
 
 interface StyleEntry {

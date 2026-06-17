@@ -2,31 +2,42 @@
 
 @source "../node_modules/@cimplify/sdk/dist";
 
-/* Best Hairline — pure black & white, modelled on dhair-boutique.com.
-   White background, near-black text. "primary" = near-black so buttons/links
-   stay monochrome. Sharp corners (radius 0). Destructive keeps a restrained
-   red so error/validation states stay legible. */
+/* Eliz Luxury Hair — soft, feminine "clean luxury" palette. Pearl off-white
+   canvas, deep navy-teal text/primary, coral accent, nude + champagne warmth,
+   aqua focus ring. Flat colours only — NO gradients. Soft rounded corners
+   (radius 0.75rem) for feminine, premium curves. Brand palette hexes are mapped
+   to semantic tokens below; the raw palette is also exposed as `--color-brand-*`
+   / `--color-pearl` utilities for hand-placed accents. */
 @theme {
-  --color-background: oklch(1 0 0);
-  --color-foreground: oklch(0.13 0 0);
-  --color-card: oklch(1 0 0);
-  --color-card-foreground: oklch(0.13 0 0);
-  --color-popover: oklch(1 0 0);
-  --color-popover-foreground: oklch(0.13 0 0);
-  --color-primary: oklch(0.13 0 0);
-  --color-primary-foreground: oklch(1 0 0);
-  --color-secondary: oklch(0.97 0 0);
-  --color-secondary-foreground: oklch(0.13 0 0);
-  --color-muted: oklch(0.97 0 0);
-  --color-muted-foreground: oklch(0.45 0 0);
-  --color-accent: oklch(0.94 0 0);
-  --color-accent-foreground: oklch(0.13 0 0);
-  --color-destructive: oklch(0.55 0.21 27);
-  --color-destructive-foreground: oklch(0.99 0 0);
-  --color-border: oklch(0.9 0 0);
-  --color-input: oklch(0.89 0 0);
-  --color-ring: oklch(0.13 0 0);
-  --radius: 0rem;
+  --color-background: #f7f7f5;          /* pearl off-white */
+  --color-foreground: #3d5f79;          /* deep navy teal — body text */
+  --color-card: #ffffff;                /* white */
+  --color-card-foreground: #3d5f79;
+  --color-popover: #ffffff;
+  --color-popover-foreground: #3d5f79;
+  --color-primary: #3d5f79;             /* deep navy teal — buttons/links */
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #ece6e0;           /* soft warm nude-tint surface */
+  --color-secondary-foreground: #3d5f79;
+  --color-muted: #efebe7;               /* warm light muted surface */
+  --color-muted-foreground: #4e6e80;    /* readable muted slate-teal */
+  --color-accent: #f0e4dc;              /* very soft nude accent surface */
+  --color-accent-foreground: #3d5f79;
+  --color-destructive: #d6653b;         /* coral orange (also prices) */
+  --color-destructive-foreground: #ffffff;
+  --color-border: #e5dfd8;
+  --color-input: #d9d2ca;
+  --color-ring: #6eb0b4;                /* aqua teal focus ring */
+  --radius: 0.75rem;
+
+  /* Raw brand palette — solid colours for hand-placed accents (no gradients). */
+  --color-brand-teal: #3d5f79;          /* deep navy teal */
+  --color-brand-aqua: #6eb0b4;          /* aqua teal */
+  --color-brand-blue: #598a9a;          /* muted blue teal */
+  --color-brand-coral: #d6653b;         /* coral orange */
+  --color-brand-nude: #dfb69f;          /* soft nude beige */
+  --color-brand-champagne: #ba886f;     /* champagne taupe */
+  --color-pearl: #f7f7f5;               /* pearl off-white */
 }
 
 @layer base {
@@ -41,9 +52,9 @@
   a { color: inherit; text-decoration: none; }
   h1, h2, h3, h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.01em;
-    font-weight: 800;
-    line-height: 1.05;
+    letter-spacing: -0.005em;
+    font-weight: 700;
+    line-height: 1.1;
   }
 }
 

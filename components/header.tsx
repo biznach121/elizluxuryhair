@@ -9,11 +9,12 @@ import { MobileNav } from "./mobile-nav";
 import { brand } from "@/lib/brand";
 
 /**
- * dhair-boutique header. On the homepage it OVERLAYS the full-screen hero:
- * transparent background with dark text by default, turning solid black with
- * white text on hover. On every other route it's a solid black sticky bar.
- * All children inherit `currentColor`, so the single colour switch on the
- * <header> drives the whole bar.
+ * Eliz Luxury Hair header. On the homepage it OVERLAYS the full-screen hero:
+ * transparent background with deep navy-teal text by default, turning solid
+ * teal with pearl text on hover. On every other route it's a solid teal sticky
+ * bar. All children inherit `currentColor`, so the single colour switch on the
+ * <header> drives the whole bar. The overlay variant is offset by `top-9` so it
+ * clears the announcement bar above it (components/announcement-bar.tsx).
  */
 export function Header() {
   const pathname = usePathname();
@@ -24,14 +25,14 @@ export function Header() {
       className={[
         "group z-40 w-full transition-colors duration-300",
         overlay
-          ? "absolute inset-x-0 top-0 bg-transparent text-foreground hover:bg-foreground hover:text-background"
+          ? "absolute inset-x-0 top-9 bg-transparent text-foreground hover:bg-foreground hover:text-background"
           : "sticky top-0 bg-foreground text-background",
       ].join(" ")}
     >
       <div className="flex items-center gap-4 px-5 sm:px-8 py-4">
         {/* Logo — script wordmark, left */}
         <Link href="/" className="shrink-0">
-          <span className="text-[28px] sm:text-[32px] leading-none" style={{ fontFamily: "var(--font-script)" }}>
+          <span className="text-[22px] sm:text-[26px] leading-none font-semibold lowercase tracking-tight" style={{ fontFamily: "var(--font-wordmark)" }}>
             {brand.shortName}
           </span>
         </Link>

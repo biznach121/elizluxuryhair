@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { Inter, Montserrat, Parisienne } from "next/font/google";
+import { Poppins, Playfair_Display, Yellowtail, Quicksand } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/providers";
 import { tags } from "@cimplify/sdk/server";
 import { getStoreServerClient } from "@/lib/cimplify-store";
+import { AnnouncementBar } from "@/components/announcement-bar";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ProductModal } from "@/components/product-modal";
@@ -15,25 +16,36 @@ import { Suspense } from "react";
 import { brand } from "@/lib/brand";
 import { getSiteUrl } from "@/lib/site-url";
 
-const inter = Inter({
+// Modern rounded geometric sans for body — clean, feminine, premium.
+const inter = Poppins({
   subsets: ["latin"],
   variable: "--font-sans",
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
-// Heavy geometric grotesque for headings (dhair-boutique's bold uppercase look).
-const display = Montserrat({
+// Elegant high-fashion serif for headings (soft-luxury beauty editorial look).
+const display = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-display",
-  weight: ["600", "700", "800", "900"],
+  weight: ["500", "600", "700", "800", "900"],
   display: "swap",
 });
 
-// Calligraphic script for the wordmark logo (dhair's cursive logo).
-const script = Parisienne({
+// Casual brush script matching the logo's "your best hair affair" tagline.
+const script = Yellowtail({
   subsets: ["latin"],
   variable: "--font-script",
   weight: "400",
+  display: "swap",
+});
+
+// Rounded geometric sans matching the logo's lowercase "elizluxuryhair"
+// wordmark — used for the brand mark in the header, footer and floating badge.
+const wordmark = Quicksand({
+  subsets: ["latin"],
+  variable: "--font-wordmark",
+  weight: ["500", "600", "700"],
   display: "swap",
 });
 
@@ -65,7 +77,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const initialLocations = locResult.ok ? locResult.value : [];
 
   return (
-    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${display.variable} ${script.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${display.variable} ${script.variable} ${wordmark.variable}`}>
       <body
         suppressHydrationWarning
         className="min-h-screen flex flex-col bg-background text-foreground font-sans"
@@ -74,6 +86,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <OrganizationJsonLd />
         </Suspense>
         <Providers initialBusiness={initialBusiness} initialLocations={initialLocations}>
+          <AnnouncementBar />
           <Header />
           <main className="flex-1 pb-12 w-full">
             <Suspense fallback={null}>{children}</Suspense>

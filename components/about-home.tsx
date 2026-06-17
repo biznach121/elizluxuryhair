@@ -2,7 +2,7 @@ import Image from "next/image";
 import { brand } from "@/lib/brand";
 
 /**
- * "About Best Hairline" — a series of full-height blocks that alternate a large
+ * "About Eliz Luxury Hair" — a series of full-height blocks that alternate a large
  * portrait against a heavy uppercase heading + underline dash + copy
  * (dhair-boutique's "About / High quality / …" flow). The intro block leads
  * with `about.eyebrow` as its heading and closes on `about.title` as a bold
